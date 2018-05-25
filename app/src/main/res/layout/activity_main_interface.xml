@@ -25,7 +25,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GO!!!"
+        android:text="GO!!"
         android:typeface="serif"
         android:id="@+id/b_go"
         android:textSize="26dp"
