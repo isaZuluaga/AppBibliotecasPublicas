@@ -31,7 +31,8 @@
         android:textSize="26dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:background="#ff9600" />
+        android:background="#ff9600"
+        android:onClick="goOptions" />
 
     <ImageView
         android:layout_width="wrap_content"
