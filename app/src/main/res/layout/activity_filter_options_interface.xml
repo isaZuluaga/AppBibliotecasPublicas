@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="TIPO-HORARIO"
         android:background="#ff9600"
-        android:id="@+id/button4"
+        android:id="@+id/btTypeSchedule"
         android:layout_marginTop="87dp"
         android:textSize="20dp"
         android:layout_below="@+id/filterOptionsView"
@@ -40,11 +40,11 @@
         android:layout_height="wrap_content"
         android:text="COMUNA-BARRIO"
         android:background="#ff9600"
-        android:id="@+id/button5"
+        android:id="@+id/btCommuneNeighborhood"
         android:layout_marginTop="60dp"
         android:textSize="20dp"
-        android:layout_below="@+id/button4"
-        android:layout_alignStart="@+id/button4"
+        android:layout_below="@+id/btTypeSchedule"
+        android:layout_alignStart="@+id/btTypeSchedule"
         android:onClick="goFilterByCB" />
 
     <Button
@@ -52,10 +52,10 @@
         android:layout_height="wrap_content"
         android:text="ATRÁS"
         android:background="#ff9600"
-        android:id="@+id/button6"
+        android:id="@+id/btBackOptions"
         android:layout_marginTop="56dp"
         android:textSize="20dp"
-        android:layout_below="@+id/button5"
-        android:layout_alignStart="@+id/button5"
+        android:layout_below="@+id/btCommuneNeighborhood"
+        android:layout_alignStart="@+id/btCommuneNeighborhood"
         android:onClick="goOptions" />
 </RelativeLayout>

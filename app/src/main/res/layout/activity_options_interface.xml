@@ -15,9 +15,9 @@
         android:layout_height="wrap_content"
         android:text="Ver Bibliotecas"
         android:background="#ff9600"
-        android:id="@+id/button"
-        android:layout_above="@+id/button2"
-        android:layout_alignStart="@+id/button2"
+        android:id="@+id/btGoLibraryMap"
+        android:layout_above="@+id/btGoLibraryInfo"
+        android:layout_alignStart="@+id/btGoLibraryInfo"
         android:layout_marginBottom="75dp"
         android:onClick="goLibraryMap"
         android:nestedScrollingEnabled="false" />
@@ -27,17 +27,18 @@
         android:layout_height="wrap_content"
         android:text="Consultar Bibliotecas"
         android:background="#ff9600"
-        android:id="@+id/button2"
+        android:id="@+id/btGoLibraryInfo"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="goSeeLibraryInfo" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Consultar Bibliotecas por parametros"
         android:background="#ff9600"
-        android:id="@+id/button3"
-        android:layout_below="@+id/button2"
+        android:id="@+id/btLibraryInfoFilter"
+        android:layout_below="@+id/btGoLibraryInfo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp" />
 

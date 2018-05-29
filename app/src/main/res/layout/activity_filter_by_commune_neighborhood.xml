@@ -27,8 +27,8 @@
         android:text="Consultar"
         android:background="#ff9600"
         android:id="@+id/btnConsultbycb"
+        android:textSize="18dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp"
-        android:textSize="18dp" />
+        android:layout_marginBottom="44dp" />
 </RelativeLayout>

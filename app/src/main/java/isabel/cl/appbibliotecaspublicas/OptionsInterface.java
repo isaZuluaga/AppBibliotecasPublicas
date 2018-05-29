@@ -1,21 +1,56 @@
 package isabel.cl.appbibliotecaspublicas;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
+import isabel.cl.appbibliotecaspublicas.utilities.Utilities;
 
 public class OptionsInterface extends AppCompatActivity {
+    SQliteConnectionHelper conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options_interface);
+        // pasa como parametros (el contxto de la app = this, el nombre de la bd = "bd_libraries, null, version de la bd = 1");
+
+        conn=new SQliteConnectionHelper(getApplicationContext(),"bd_libraries",null,1);
+        //SQliteConnectionHelper conn=new SQliteConnectionHelper(this,"bd_libraries",null,1);
+        addDataToDataBase();
+
+    }
+
+    private void addDataToDataBase (){
+        // para la conexion a la bd se pasa como parametros (el contxto de la app = this, el nombre de la bd = "bd_libraries, null, version de la bd = 1");
+        //SQliteConnectionHelper conn=new SQliteConnectionHelper(this,"bd_libraries",null,1);
+
+
+        SQLiteDatabase db=conn.getWritableDatabase();
+
+        //insert into libraries (id,nombre,telefono,direccion,correo,link,tipo,horario,barrio,comuna) values (valores que van en los campos en orden,'texto entre comilla simple')
+        String insert="INSERT INTO "+ Utilities.LIBRARY_TABLE
+                +" ("
+                +Utilities.ID_FIELD+","+Utilities.NAME_FIELD+","+Utilities.TELEPHONE_FIELD+","+Utilities.ADDRESS_FIELD+","+Utilities.MAIL_FIELD+","+Utilities.LINK_FIELD+","+Utilities.TYPE_FIELD+","+Utilities.SCHEDULE_FIELD+","+Utilities.NEIGHBORHOOD_FIELD+","+Utilities.COMMUNE_FIELD+")" +
+                " VALUES (1,'Biblioteca Gabriel Garcia Marquez','4776727','CR 80 104 04','docedeoctubre@bibliotecasmedellin.gov.co','http://bibliotecasmedellin.gov.co/parque-biblioteca-doce-de-octubre/','Parque Biblioteca','Lunes a sábado: 9:00 am - 8:00 pm','Santander','Doce de Octubre')";
+
+        db.execSQL(insert);
+        db.close();
+        Toast.makeText(this, "Info added to the database",
+                Toast.LENGTH_SHORT).show();
     }
 
     void goLibraryMap (View v)
     {
         Intent intention = new Intent(this, LibraryMapsActivity.class);
+        startActivity(intention);
+
+    }
+    void goSeeLibraryInfo (View v){
+        Intent intention = new Intent(this, SeeLibraryInfo.class);
         startActivity(intention);
 
     }

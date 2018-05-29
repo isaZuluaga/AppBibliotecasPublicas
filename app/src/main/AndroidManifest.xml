@@ -41,7 +41,8 @@
 
         <activity
             android:name=".LibraryMapsActivity"
-            android:label="@string/title_activity_library_maps"></activity>
+            android:label="@string/title_activity_library_maps" />
+        <activity android:name=".SeeLibraryInfo"></activity>
     </application>
 
 </manifest>
