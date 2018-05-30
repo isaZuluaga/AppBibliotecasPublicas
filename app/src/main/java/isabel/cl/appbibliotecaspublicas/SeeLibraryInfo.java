@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.util.Log;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -46,20 +47,29 @@ public class SeeLibraryInfo extends AppCompatActivity {
 
         comboLibrary.setAdapter(adaptador);
 
-        comboLibrary.setOnItemClickListener(new AdapterView.OnItemSelectedListener(){
+        comboLibrary.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
                 if (position!=0){
-                    libraryName.setText(libraryList.get(position-1).getId().toString());
+                    String nombre = Integer.toString(libraryList.get(position-1).getId());
+                    libraryName.setText(nombre);
                     libraryTel.setText(libraryList.get(position-1).getNombre());
-                    libraryDir.setText(libraryList.get(position-1).getTelefono());
+                    libraryDir.setText(libraryList.get(position-1).getDireccion());
+
                 }else{
                     libraryName.setText("");
                     libraryTel.setText("");
                     libraryDir.setText("");
                 }
+
+                Toast.makeText(parent.getContext(), "Seleccionado: "+parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
+
+
+
             }
 
             @Override
@@ -69,6 +79,7 @@ public class SeeLibraryInfo extends AppCompatActivity {
         });
 
     }
+
 
     private void consultLibrarylist() {
 
@@ -94,9 +105,8 @@ public class SeeLibraryInfo extends AppCompatActivity {
             library.setBarrio(cursor.getString(8));
             library.setComuna(cursor.getString(9));
 
-            //Log.i("id",library.getId().toString());
-            //Log.i("Nombre",library.getNombre());
-            //Log.i("Telefono",library.getTelefono());
+
+
 
             libraryList.add(library);
         }
@@ -107,10 +117,12 @@ public class SeeLibraryInfo extends AppCompatActivity {
 
     private void obtainList() {
         listLibrary=new ArrayList<String>();
-        listLibrary.add("seleccione");
+        listLibrary.add("seleccione una biblioteca");
 
         for (int i=0;i<libraryList.size();i++){
             listLibrary.add(libraryList.get(i).getId()+" - "+libraryList.get(i).getNombre());
         }
     }
+
+
 }
