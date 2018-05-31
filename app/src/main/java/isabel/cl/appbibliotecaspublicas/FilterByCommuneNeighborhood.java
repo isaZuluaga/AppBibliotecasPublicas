@@ -1,9 +1,12 @@
 package isabel.cl.appbibliotecaspublicas;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -42,6 +45,70 @@ public class FilterByCommuneNeighborhood extends AppCompatActivity {
         ArrayAdapter<CharSequence> adaptadorbarrio=new ArrayAdapter(this,android.R.layout.simple_spinner_item,neighborhoodList);
 
         comboNeighborhood.setAdapter(adaptadorbarrio);
+
+        comboCommune.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position!=0){
+
+                    String comuna =""+libraryList.get(position-1).getComuna();
+
+                    Intent intention = new Intent(FilterByCommuneNeighborhood.this, LibraryInformationInterface.class);
+
+                    //Bundle bundle = new Bundle();
+                    //bundle.putString("tipobiblioteca",tipo);
+                    intention.putExtra("comunabiblioteca",comuna);
+                    startActivity(intention);
+
+
+                }else{
+                    //paramType.setText("");
+
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        comboNeighborhood.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position!=0){
+
+                    String barrio =""+libraryList.get(position-1).getBarrio();
+
+                    Intent intention = new Intent(FilterByCommuneNeighborhood.this, LibraryInformationInterface.class);
+
+                    //Bundle bundle = new Bundle();
+                    //bundle.putString("tipobiblioteca",tipo);
+                    intention.putExtra("barriobiblioteca",barrio);
+                    startActivity(intention);
+
+
+                }else{
+                    //paramType.setText("");
+
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
     }
 

@@ -80,8 +80,6 @@ public class FilterByTypeSchedule extends AppCompatActivity {
             }
         });
 
-
-
         comboSchedule.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
 
@@ -112,11 +110,7 @@ public class FilterByTypeSchedule extends AppCompatActivity {
         });
 
 
-
-
     }
-
-
 
     private void consultLibrarylist() {
 

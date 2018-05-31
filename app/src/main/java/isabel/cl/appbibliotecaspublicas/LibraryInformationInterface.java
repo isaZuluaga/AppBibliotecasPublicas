@@ -23,7 +23,7 @@ public class LibraryInformationInterface extends AppCompatActivity {
     ArrayList<Library> libraryList;
     ArrayList<String> resultList;
     TextView param1Receiver,param2Receiver,libraryID,libraryNAME,libraryTEL,libraryADD;
-    Bundle libraryType,librarySchedule;
+    Bundle libraryType,librarySchedule,libraryCommune,libraryNeighborhood;
 
 
     SQliteConnectionHelper conn;
@@ -49,21 +49,47 @@ public class LibraryInformationInterface extends AppCompatActivity {
         libraryType = getIntent().getExtras();
         librarySchedule=getIntent().getExtras();
 
+        libraryCommune=getIntent().getExtras();
+        libraryNeighborhood=getIntent().getExtras();
+
+        //ponemos los campos de los parametros vacios
+        param1Receiver.setText("");
+        param2Receiver.setText("");
+
+
         String typeParameter=null;
                 typeParameter= libraryType.getString("tipobiblioteca");
-        param1Receiver.setText(typeParameter);
+        //param1Receiver.setText(typeParameter);
 
         String scheduleParameter=null;
                 scheduleParameter= librarySchedule.getString("horariobiblioteca");
-        param2Receiver.setText(scheduleParameter);
+        //param2Receiver.setText(scheduleParameter);
+
+        String communeParameter=null;
+        communeParameter= libraryCommune.getString("comunabiblioteca");
+        //param1Receiver.setText(communeParameter);
+
+        String neighborhoodParameter=null;
+        neighborhoodParameter= libraryNeighborhood.getString("barriobiblioteca");
+        //param2Receiver.setText(neighborhoodParameter);
+
 
         if(scheduleParameter!=null) {
+            param2Receiver.setText(scheduleParameter);
             consultLibrarylistBySchedule();
         }
         if(typeParameter!=null){
+            param1Receiver.setText(typeParameter);
         consultLibrarylistByType();
         }
-
+        if(communeParameter!=null){
+            param1Receiver.setText(communeParameter);
+            consultLibrarylistByCommune();
+        }
+        if (neighborhoodParameter!=null){
+            param2Receiver.setText(neighborhoodParameter);
+            consultLibrarylistByNeighborhood();
+        }
 
         ArrayAdapter<CharSequence> adaptadorFiltro=new ArrayAdapter(this,android.R.layout.simple_spinner_item,resultList);
         comboFilterResult.setAdapter(adaptadorFiltro);
@@ -110,6 +136,74 @@ public class LibraryInformationInterface extends AppCompatActivity {
 
     }
 
+    private void consultLibrarylistByCommune() {
+        SQLiteDatabase db=conn.getReadableDatabase();
+
+        Library library = null;
+        //crea instancia a la lista librarylist
+        libraryList=new ArrayList<Library>();
+
+        String commune = param1Receiver.getText().toString();
+
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Utilities.LIBRARY_TABLE + " WHERE " + Utilities.COMMUNE_FIELD + "=?", new String[] {commune});
+
+
+        while (cursor.moveToNext()){
+            library=new Library();
+            library.setId(cursor.getInt(0));
+            library.setNombre(cursor.getString(1));
+            library.setTelefono(cursor.getString(2));
+            library.setDireccion(cursor.getString(3));
+            library.setCorreo(cursor.getString(4));
+            library.setLink(cursor.getString(5));
+            library.setTipo(cursor.getString(6));
+            library.setHorario(cursor.getString(7));
+            library.setBarrio(cursor.getString(8));
+            library.setComuna(cursor.getString(9));
+
+
+
+
+            libraryList.add(library);
+        }
+        obtainList();
+    }
+
+    private void consultLibrarylistByNeighborhood() {
+        SQLiteDatabase db=conn.getReadableDatabase();
+
+        Library library = null;
+        //crea instancia a la lista librarylist
+        libraryList=new ArrayList<Library>();
+
+        String neighborhood = param2Receiver.getText().toString();
+
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Utilities.LIBRARY_TABLE + " WHERE " + Utilities.NEIGHBORHOOD_FIELD + "=?", new String[] {neighborhood});
+
+
+        while (cursor.moveToNext()){
+            library=new Library();
+            library.setId(cursor.getInt(0));
+            library.setNombre(cursor.getString(1));
+            library.setTelefono(cursor.getString(2));
+            library.setDireccion(cursor.getString(3));
+            library.setCorreo(cursor.getString(4));
+            library.setLink(cursor.getString(5));
+            library.setTipo(cursor.getString(6));
+            library.setHorario(cursor.getString(7));
+            library.setBarrio(cursor.getString(8));
+            library.setComuna(cursor.getString(9));
+
+
+
+
+            libraryList.add(library);
+        }
+        obtainList();
+    }
+
     private void consultLibrarylistByType() {
         SQLiteDatabase db=conn.getReadableDatabase();
 
@@ -145,7 +239,6 @@ public class LibraryInformationInterface extends AppCompatActivity {
 
 
     }
-
 
     private void consultLibrarylistBySchedule() {
 
