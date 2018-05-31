@@ -20,11 +20,9 @@ public class OptionsInterface extends AppCompatActivity {
 
         conn=new SQliteConnectionHelper(getApplicationContext(),"bd_libraries",null,1);
 
-        //addDataToDataBase();
+
         eliminateFromDataBase();
         addDataToDataBase();
-
-
 
     }
 
@@ -38,8 +36,7 @@ public class OptionsInterface extends AppCompatActivity {
         db.execSQL(delete);
         db.execSQL(delete2);
         db.close();
-        Toast.makeText(this, "Info eliminate in the database",
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Info eliminate in the database", Toast.LENGTH_SHORT).show();
     }
 
     private void addDataToDataBase (){
@@ -58,13 +55,12 @@ public class OptionsInterface extends AppCompatActivity {
         String insert2="INSERT INTO "+ Utilities.LIBRARY_TABLE
                 +" ("
                 +Utilities.ID_FIELD+","+Utilities.NAME_FIELD+","+Utilities.TELEPHONE_FIELD+","+Utilities.ADDRESS_FIELD+","+Utilities.MAIL_FIELD+","+Utilities.LINK_FIELD+","+Utilities.TYPE_FIELD+","+Utilities.SCHEDULE_FIELD+","+Utilities.NEIGHBORHOOD_FIELD+","+Utilities.COMMUNE_FIELD+")" +
-                " VALUES (2,'Biblioteca Julio Gonzalez Marín','4776728','CR 81 104 04','docedeoctubre@bibliotecasmedellin.gov.co','http://bibliotecasmedellin.gov.co/parque-biblioteca-doce-de-octubre/','Parque Biblioteca','Lunes a sábado: 9:00 am - 8:00 pm','Santander','Doce de Octubre')";
+                " VALUES (2,'Biblioteca Julio Gonzalez Marín','4776728','CR 81 104 04','docedeoctubre@bibliotecasmedellin.gov.co','http://bibliotecasmedellin.gov.co/parque-biblioteca-doce-de-octubre/','Parque Biblioteca','Lunes a sábado: 9:00 am - 8:00 pm','Cristo Rey','Doce de Octubre')";
 
         db.execSQL(insert);
         db.execSQL(insert2);
         db.close();
-        Toast.makeText(this, "Info added to the database",
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Info added to the database",Toast.LENGTH_SHORT).show();
     }
 
     void goLibraryMap (View v)
@@ -76,6 +72,12 @@ public class OptionsInterface extends AppCompatActivity {
     void goSeeLibraryInfo (View v){
 
         Intent intention = new Intent(this, SeeLibraryInfo.class);
+        startActivity(intention);
+
+    }
+    void goFilterConsult (View v){
+
+        Intent intention = new Intent(this, FilterOptionsInterface.class);
         startActivity(intention);
 
     }

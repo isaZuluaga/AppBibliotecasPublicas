@@ -18,8 +18,9 @@
         android:id="@+id/filterbycbView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="29dp"
-        android:textColor="#080808" />
+        android:textSize="27dp"
+        android:textColor="#080808"
+        android:typeface="serif" />
 
     <Button
         android:layout_width="wrap_content"
@@ -31,4 +32,20 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="44dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/comboComune"
+        android:layout_below="@+id/filterbycbView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="57dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/comboNeighborhood"
+        android:layout_above="@+id/btnConsultbycb"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="79dp" />
 </RelativeLayout>

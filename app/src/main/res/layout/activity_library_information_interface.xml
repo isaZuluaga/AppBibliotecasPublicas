@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Información de la biblioteca"
+        android:text="Información de la biblioteca por filtro"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -22,4 +22,86 @@
         android:textColor="#141212"
         android:typeface="serif"
         android:textAlignment="center" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/comboFilterResult"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="ID"
+        android:id="@+id/libraryID"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#0d0c0c"
+        android:textSize="23dp"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Nombre"
+        android:id="@+id/libraryNAME"
+        android:layout_below="@+id/libraryID"
+        android:layout_alignParentStart="true"
+        android:textColor="#060505"
+        android:textSize="23dp"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Telefóno"
+        android:id="@+id/libraryTEL"
+        android:layout_below="@+id/libraryNAME"
+        android:layout_alignParentStart="true"
+        android:textSize="23dp"
+        android:textColor="#0b0b0b"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Dirección"
+        android:id="@+id/libraryADD"
+        android:layout_below="@+id/libraryTEL"
+        android:layout_alignParentStart="true"
+        android:textSize="23dp"
+        android:textColor="#181717"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="param1"
+        android:id="@+id/typeReceiver"
+        android:layout_below="@+id/libraryADD"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp"
+        android:typeface="serif"
+        android:textSize="22dp"
+        android:textColor="#060606" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="param2"
+        android:id="@+id/scheduleReceiver"
+        android:layout_alignBottom="@+id/typeReceiver"
+        android:layout_alignParentEnd="true"
+        android:typeface="serif"
+        android:textSize="22dp"
+        android:textColor="#080808" />
+
 </RelativeLayout>

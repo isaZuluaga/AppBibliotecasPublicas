@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.util.Log;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +19,7 @@ import isabel.cl.appbibliotecaspublicas.utilities.Utilities;
 public class SeeLibraryInfo extends AppCompatActivity {
 
     Spinner comboLibrary;
-    TextView libraryName,libraryTel,libraryDir;
+    TextView libraryName,libraryTel,libraryDir,libraryId,libraryCommune,libraryNeighborhood,librarySchedule;
     ArrayList<String> listLibrary;
     ArrayList<Library> libraryList;
 
@@ -36,9 +34,15 @@ public class SeeLibraryInfo extends AppCompatActivity {
 
         comboLibrary= (Spinner) findViewById(R.id.comboLibrary);
 
-        libraryName = (TextView) findViewById(R.id.libraryName);
-        libraryTel= (TextView) findViewById(R.id.libraryTel);
+        libraryId= (TextView) findViewById(R.id.libraryId);
+        libraryName = (TextView) findViewById(R.id.libraryNAME);
+        libraryTel= (TextView) findViewById(R.id.libraryTEL);
         libraryDir= (TextView) findViewById(R.id.libraryDir);
+        libraryCommune= (TextView) findViewById(R.id.libraryCommune);
+        libraryNeighborhood=(TextView) findViewById(R.id.libraryNeighborhood);
+        librarySchedule=(TextView) findViewById(R.id.librarySchedule);
+
+
 
         consultLibrarylist();
 
@@ -56,14 +60,23 @@ public class SeeLibraryInfo extends AppCompatActivity {
 
                 if (position!=0){
                     String nombre = Integer.toString(libraryList.get(position-1).getId());
-                    libraryName.setText(nombre);
-                    libraryTel.setText(libraryList.get(position-1).getNombre());
+                    libraryId.setText(nombre);
+                    libraryName.setText(libraryList.get(position-1).getNombre());
+                    libraryTel.setText(libraryList.get(position-1).getTelefono());
                     libraryDir.setText(libraryList.get(position-1).getDireccion());
+                    libraryCommune.setText(libraryList.get(position-1).getComuna());
+                    libraryNeighborhood.setText(libraryList.get(position-1).getBarrio());
+                    librarySchedule.setText(libraryList.get(position-1).getHorario());
 
                 }else{
+                    libraryId.setText("");
                     libraryName.setText("");
                     libraryTel.setText("");
                     libraryDir.setText("");
+                    libraryCommune.setText("");
+                    libraryNeighborhood.setText("");
+                    librarySchedule.setText("");
+
                 }
 
                 Toast.makeText(parent.getContext(), "Seleccionado: "+parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();

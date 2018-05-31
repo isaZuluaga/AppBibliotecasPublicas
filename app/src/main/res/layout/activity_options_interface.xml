@@ -40,7 +40,8 @@
         android:id="@+id/btLibraryInfoFilter"
         android:layout_below="@+id/btGoLibraryInfo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        android:onClick="goFilterConsult" />
 
     <TextView
         android:layout_width="wrap_content"

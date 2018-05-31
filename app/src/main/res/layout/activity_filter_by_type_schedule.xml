@@ -19,7 +19,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="29dp"
-        android:textColor="#080808" />
+        android:textColor="#080808"
+        android:typeface="serif" />
 
     <Button
         android:layout_width="wrap_content"
@@ -30,5 +31,33 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="48dp"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        android:onClick="doFilterConsult" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/comboType"
+        android:layout_below="@+id/filterbythView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="75dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/comboSchedule"
+        android:layout_below="@+id/comboType"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="75dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="param tipo"
+        android:id="@+id/paramTipo"
+        android:layout_below="@+id/comboType"
+        android:layout_alignParentStart="true"
+        android:textColor="#080808"
+        android:textSize="20dp" />
 </RelativeLayout>

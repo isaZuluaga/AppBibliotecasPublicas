@@ -1,13 +1,197 @@
 package isabel.cl.appbibliotecaspublicas;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import isabel.cl.appbibliotecaspublicas.entity.Library;
+import isabel.cl.appbibliotecaspublicas.utilities.Utilities;
 
 public class LibraryInformationInterface extends AppCompatActivity {
+
+    Spinner comboFilterResult;
+    ArrayList<Library> libraryList;
+    ArrayList<String> resultList;
+    TextView param1Receiver,param2Receiver,libraryID,libraryNAME,libraryTEL,libraryADD;
+    Bundle libraryType,librarySchedule;
+
+
+    SQliteConnectionHelper conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library_information_interface);
+
+        conn=new SQliteConnectionHelper(getApplicationContext(),"bd_libraries",null,1);
+
+        comboFilterResult = (Spinner) findViewById(R.id.comboFilterResult);
+
+        libraryID = (TextView) findViewById(R.id.libraryID);
+        libraryADD= (TextView) findViewById(R.id.libraryADD);
+        libraryTEL = (TextView) findViewById(R.id.libraryTEL);
+        libraryNAME = (TextView) findViewById(R.id.libraryNAME);
+
+        param1Receiver = (TextView) findViewById(R.id.typeReceiver);
+        param2Receiver = (TextView) findViewById(R.id.scheduleReceiver);
+
+
+        libraryType = getIntent().getExtras();
+        librarySchedule=getIntent().getExtras();
+
+        String typeParameter=null;
+                typeParameter= libraryType.getString("tipobiblioteca");
+        param1Receiver.setText(typeParameter);
+
+        String scheduleParameter=null;
+                scheduleParameter= librarySchedule.getString("horariobiblioteca");
+        param2Receiver.setText(scheduleParameter);
+
+        if(scheduleParameter!=null) {
+            consultLibrarylistBySchedule();
+        }
+        if(typeParameter!=null){
+        consultLibrarylistByType();
+        }
+
+
+        ArrayAdapter<CharSequence> adaptadorFiltro=new ArrayAdapter(this,android.R.layout.simple_spinner_item,resultList);
+        comboFilterResult.setAdapter(adaptadorFiltro);
+
+        comboFilterResult.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position!=0){
+                    String nombre = Integer.toString(libraryList.get(position-1).getId());
+                    libraryID.setText(nombre);
+                    libraryNAME.setText(libraryList.get(position-1).getNombre());
+                    libraryTEL.setText(libraryList.get(position-1).getTelefono());
+                    libraryADD.setText(libraryList.get(position-1).getDireccion());
+
+
+
+                }else{
+                    libraryID.setText("");
+                    libraryNAME.setText("");
+                    libraryTEL.setText("");
+                    libraryADD.setText("");
+
+
+
+                }
+
+                Toast.makeText(parent.getContext(), "Seleccionado: "+parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
+
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
     }
+
+    private void consultLibrarylistByType() {
+        SQLiteDatabase db=conn.getReadableDatabase();
+
+        Library library = null;
+        //crea instancia a la lista librarylist
+        libraryList=new ArrayList<Library>();
+
+        String type = param1Receiver.getText().toString();
+
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Utilities.LIBRARY_TABLE + " WHERE " + Utilities.TYPE_FIELD + "=?", new String[] {type});
+
+
+        while (cursor.moveToNext()){
+            library=new Library();
+            library.setId(cursor.getInt(0));
+            library.setNombre(cursor.getString(1));
+            library.setTelefono(cursor.getString(2));
+            library.setDireccion(cursor.getString(3));
+            library.setCorreo(cursor.getString(4));
+            library.setLink(cursor.getString(5));
+            library.setTipo(cursor.getString(6));
+            library.setHorario(cursor.getString(7));
+            library.setBarrio(cursor.getString(8));
+            library.setComuna(cursor.getString(9));
+
+
+
+
+            libraryList.add(library);
+        }
+        obtainList();
+
+
+    }
+
+
+    private void consultLibrarylistBySchedule() {
+
+        SQLiteDatabase db=conn.getReadableDatabase();
+
+        Library library = null;
+        //crea instancia a la lista librarylist
+        libraryList=new ArrayList<Library>();
+
+        String schedule = param2Receiver.getText().toString();
+
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Utilities.LIBRARY_TABLE + " WHERE " + Utilities.SCHEDULE_FIELD + "=?", new String[] {schedule});
+
+
+        while (cursor.moveToNext()){
+            library=new Library();
+            library.setId(cursor.getInt(0));
+            library.setNombre(cursor.getString(1));
+            library.setTelefono(cursor.getString(2));
+            library.setDireccion(cursor.getString(3));
+            library.setCorreo(cursor.getString(4));
+            library.setLink(cursor.getString(5));
+            library.setTipo(cursor.getString(6));
+            library.setHorario(cursor.getString(7));
+            library.setBarrio(cursor.getString(8));
+            library.setComuna(cursor.getString(9));
+
+
+
+
+            libraryList.add(library);
+        }
+        obtainList();
+
+    }
+
+    private void obtainList() {
+        resultList=new ArrayList<String>();
+        resultList.add("seleccione una biblioteca del filtro");
+
+        for (int i=0;i<libraryList.size();i++){
+            resultList.add(libraryList.get(i).getId()+" - "+libraryList.get(i).getNombre());
+        }
+    }
+
+
+
 }

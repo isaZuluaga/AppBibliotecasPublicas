@@ -26,4 +26,10 @@ public class FilterOptionsInterface extends AppCompatActivity {
         startActivity(intention);
 
     }
+    void goOptions (View v){
+
+        Intent intention = new Intent(this, OptionsInterface.class);
+        startActivity(intention);
+
+    }
 }

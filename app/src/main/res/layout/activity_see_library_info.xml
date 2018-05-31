@@ -57,22 +57,24 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Nombre Biblioteca"
-        android:id="@+id/libraryName"
+        android:id="@+id/libraryNAME"
         android:textSize="23dp"
         android:textColor="#0e0d0d"
-        android:layout_above="@+id/libraryTel"
-        android:layout_alignParentStart="true" />
+        android:layout_above="@+id/libraryTEL"
+        android:layout_alignParentStart="true"
+        android:typeface="serif" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Telefóno"
-        android:id="@+id/libraryTel"
+        android:id="@+id/libraryTEL"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:textColor="#080707"
-        android:textSize="23dp" />
+        android:textSize="23dp"
+        android:typeface="serif" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -82,7 +84,56 @@
         android:id="@+id/libraryDir"
         android:textColor="#0a0909"
         android:textSize="23dp"
-        android:layout_below="@+id/libraryTel"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/libraryTEL"
+        android:layout_alignParentStart="true"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Comuna"
+        android:id="@+id/libraryCommune"
+        android:layout_below="@+id/libraryDir"
+        android:layout_alignParentStart="true"
+        android:typeface="serif"
+        android:textSize="23dp"
+        android:textColor="#100f0f" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Barrio"
+        android:id="@+id/libraryNeighborhood"
+        android:layout_below="@+id/libraryCommune"
+        android:layout_alignParentStart="true"
+        android:textSize="23dp"
+        android:textColor="#060505"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Horario"
+        android:id="@+id/librarySchedule"
+        android:layout_below="@+id/libraryNeighborhood"
+        android:layout_alignParentStart="true"
+        android:textColor="#0a0a0a"
+        android:textSize="23dp"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="ID"
+        android:id="@+id/libraryId"
+        android:layout_above="@+id/libraryNAME"
+        android:layout_alignParentStart="true"
+        android:textColor="#0f0e0e"
+        android:typeface="serif"
+        android:textSize="23dp" />
 
 </RelativeLayout>
