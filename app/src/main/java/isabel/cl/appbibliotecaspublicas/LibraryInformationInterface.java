@@ -65,19 +65,19 @@ public class LibraryInformationInterface extends AppCompatActivity {
 
         String typeParameter=null;
                 typeParameter= libraryType.getString("tipobiblioteca");
-        //param1Receiver.setText(typeParameter);
+
 
         String scheduleParameter=null;
                 scheduleParameter= librarySchedule.getString("horariobiblioteca");
-        //param2Receiver.setText(scheduleParameter);
+
 
         String communeParameter=null;
         communeParameter= libraryCommune.getString("comunabiblioteca");
-        //param1Receiver.setText(communeParameter);
+
 
         String neighborhoodParameter=null;
         neighborhoodParameter= libraryNeighborhood.getString("barriobiblioteca");
-        //param2Receiver.setText(neighborhoodParameter);
+
 
 
         if(scheduleParameter!=null) {
@@ -297,7 +297,8 @@ public class LibraryInformationInterface extends AppCompatActivity {
 
     void goLink (View v){
 
-        String libraryUrl = "http://google.com/";
+        //String libraryUrl = "http://google.com/";
+        String libraryUrl = libraryLINK.getText().toString();
 
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(libraryUrl));

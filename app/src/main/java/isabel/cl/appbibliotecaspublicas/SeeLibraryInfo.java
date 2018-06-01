@@ -107,17 +107,7 @@ public class SeeLibraryInfo extends AppCompatActivity {
 
 
 
-    }
-
-    private void moreLibraryInformation() {
-        String libraryUrl = libraryLink.getText().toString();
-
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(libraryUrl));
-        startActivity(i);
-
-
-    }
+        }
 
 
     private void consultLibrarylist() {
@@ -173,7 +163,8 @@ public class SeeLibraryInfo extends AppCompatActivity {
 
     void goWeb (View v){
 
-        String libraryUrl = "http://google.com/";
+        //String libraryUrl = "http://google.com/";
+        String libraryUrl = libraryLink.getText().toString();
 
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(libraryUrl));
