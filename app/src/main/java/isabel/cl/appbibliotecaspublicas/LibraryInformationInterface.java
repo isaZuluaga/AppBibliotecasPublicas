@@ -3,6 +3,7 @@ package isabel.cl.appbibliotecaspublicas;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,8 +23,11 @@ public class LibraryInformationInterface extends AppCompatActivity {
     Spinner comboFilterResult;
     ArrayList<Library> libraryList;
     ArrayList<String> resultList;
-    TextView param1Receiver,param2Receiver,libraryID,libraryNAME,libraryTEL,libraryADD;
+    TextView param1Receiver,param2Receiver,libraryID,libraryNAME,libraryTEL,libraryADD,libraryMAIL,libraryLINK;
     Bundle libraryType,librarySchedule,libraryCommune,libraryNeighborhood;
+
+
+
 
 
     SQliteConnectionHelper conn;
@@ -41,6 +45,8 @@ public class LibraryInformationInterface extends AppCompatActivity {
         libraryADD= (TextView) findViewById(R.id.libraryADD);
         libraryTEL = (TextView) findViewById(R.id.libraryTEL);
         libraryNAME = (TextView) findViewById(R.id.libraryNAME);
+        libraryMAIL = (TextView) findViewById(R.id.libraryMAIL);
+        libraryLINK = (TextView) findViewById(R.id.libraryLINK);
 
         param1Receiver = (TextView) findViewById(R.id.typeReceiver);
         param2Receiver = (TextView) findViewById(R.id.scheduleReceiver);
@@ -106,6 +112,8 @@ public class LibraryInformationInterface extends AppCompatActivity {
                     libraryNAME.setText(libraryList.get(position-1).getNombre());
                     libraryTEL.setText(libraryList.get(position-1).getTelefono());
                     libraryADD.setText(libraryList.get(position-1).getDireccion());
+                    libraryMAIL.setText(libraryList.get(position-1).getCorreo());
+                    libraryLINK.setText(libraryList.get(position-1).getLink());
 
 
 
@@ -114,6 +122,8 @@ public class LibraryInformationInterface extends AppCompatActivity {
                     libraryNAME.setText("");
                     libraryTEL.setText("");
                     libraryADD.setText("");
+                    libraryMAIL.setText("");
+                    libraryLINK.setText("");
 
 
 
@@ -284,6 +294,31 @@ public class LibraryInformationInterface extends AppCompatActivity {
             resultList.add(libraryList.get(i).getId()+" - "+libraryList.get(i).getNombre());
         }
     }
+
+    void goLink (View v){
+
+        String libraryUrl = "http://google.com/";
+
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(libraryUrl));
+        startActivity(i);
+    }
+
+    void doExit (View v){
+        Intent intention = new Intent(this, MainInterface.class);
+        startActivity(intention);
+
+
+    }
+    void doMail (View v){
+
+
+        Intent intention = new Intent(this, SendMailInterface.class);
+        startActivity(intention);
+
+    }
+
+
 
 
 

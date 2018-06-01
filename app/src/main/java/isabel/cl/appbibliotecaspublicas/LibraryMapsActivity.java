@@ -1,6 +1,7 @@
 package isabel.cl.appbibliotecaspublicas;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -17,11 +18,13 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import android.location.LocationListener;
+import android.widget.Toast;
 
-public class LibraryMapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class LibraryMapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener, OnMapReadyCallback {
 
     private GoogleMap mMap;
     /* añadimos un marcador el cual correspondera a la ubicación actual del usuario,
@@ -57,17 +60,81 @@ public class LibraryMapsActivity extends FragmentActivity implements OnMapReadyC
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         myLocation();
-        /*
-        // Add a marker in Sydney and move the camera
+
         // Se establecen las latitudes y longitudes de los lugares donde van los markers tipo de dato: LatLng (latitud, longitud)
-        LatLng Sydney = new LatLng(-34, 151);
-        LatLng Medellin = new LatLng(6.25184, -75.56359);
+        LatLng filialJuanZuletaFerrer = new LatLng(6.274005957000043, -75.55843265099998);
+        LatLng bibliotecaGabrielGarciaMarquez = new LatLng(6.304412644000024, -75.57773820199998);
+        LatLng bibliotecaPublicaCentroOccidental = new LatLng(6.253418128000021, -75.62479067399994);
+        LatLng archivoHistoricodeMedellin = new LatLng(6.247632202000034, -75.56339566099996);
 
-        mMap.addMarker(new MarkerOptions().position(Sydney).title("Marker in Sydney"));
+        //(6.274005957000043, -75.55843265099998)Filial Juan Zuleta Ferrer
+        //Biblioteca Gabriel García Márquez (6.304412644000024, -75.57773820199998)
+        //Biblioteca Pública Centro Occidental (6.253418128000021, -75.62479067399994)
+        //Archivo Histórico de Medellín (6.247632202000034, -75.56339566099996)
 
-        // la proxima linea abre el mapa en el punto especificado y permite mover la camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Medellin));*/
+        // en los proximos bloques de codigo se inicializa el marker y se establecen opciones como el titulo subtitulo y el color....
+
+        Marker filialjuanzuletaferrer = mMap. addMarker( new MarkerOptions()
+                .position(filialJuanZuletaFerrer)
+                .title("Filial Juan Zuleta Ferrer")
+                .snippet("CR 49A 80 46  Brasilia")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory. HUE_CYAN))
+
+        );
+
+        Marker bibliotecagabrielgarciamarquez  = mMap. addMarker( new MarkerOptions()
+                .position(bibliotecaGabrielGarciaMarquez)
+                .title("Biblioteca Gabriel García Márquez")
+                .snippet("CR 80 104 04 Santander")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+
+        );
+
+        Marker bibliotecapublicacentrooccidental  = mMap. addMarker( new MarkerOptions()
+                .position(bibliotecaPublicaCentroOccidental)
+                .title("Biblioteca Pública Centro Occidental")
+                .snippet("CL 39D 112 81 La Floresta")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+
+        );
+
+        Marker archivohistoricodemedellin  = mMap. addMarker( new MarkerOptions()
+                .position(archivoHistoricodeMedellin)
+                .title("Archivo Histórico de Medellín")
+                .snippet("CL 50 43 64 La Candelaria")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+
+        );
+
+
+        // para auto-zoom y auto center
+        LatLngBounds bounds = new LatLngBounds.Builder()
+
+                .include(filialJuanZuletaFerrer)
+                .include(bibliotecaGabrielGarciaMarquez)
+                .include(bibliotecaPublicaCentroOccidental)
+                .include(archivoHistoricodeMedellin)
+
+                .build();
+        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 300));
+
+
+        mMap.setOnInfoWindowClickListener(this); // acabada de añadir
+
+
+
     }
+
+    // eventos de click en la ventana de información de cada Marker acabado de agregar
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Toast.makeText(this, "Info window clicked",
+                Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(LibraryMapsActivity.this, SeeLibraryInfo.class);
+        startActivity(intent);
+
+    }
+
 
     // metodo para añadir el marcador con mi ubicación
     private void addMarker(double lat, double lng) {
@@ -77,7 +144,7 @@ public class LibraryMapsActivity extends FragmentActivity implements OnMapReadyC
         myMarker = mMap.addMarker(new MarkerOptions()
                 .position(coordinates)
                 .title("Mi Posición Actual")
-                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_userlocation)));
         mMap.animateCamera(myLocation);
     }
 

@@ -1,7 +1,10 @@
 package isabel.cl.appbibliotecaspublicas;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,9 +22,11 @@ import isabel.cl.appbibliotecaspublicas.utilities.Utilities;
 public class SeeLibraryInfo extends AppCompatActivity {
 
     Spinner comboLibrary;
-    TextView libraryName,libraryTel,libraryDir,libraryId,libraryCommune,libraryNeighborhood,librarySchedule;
+    TextView libraryName,libraryTel,libraryDir,libraryId,libraryCommune,libraryNeighborhood,librarySchedule,libraryMail,libraryLink;
     ArrayList<String> listLibrary;
     ArrayList<Library> libraryList;
+
+
 
     SQliteConnectionHelper conn;
 
@@ -41,6 +46,8 @@ public class SeeLibraryInfo extends AppCompatActivity {
         libraryCommune= (TextView) findViewById(R.id.libraryCommune);
         libraryNeighborhood=(TextView) findViewById(R.id.libraryNeighborhood);
         librarySchedule=(TextView) findViewById(R.id.librarySchedule);
+        libraryMail=(TextView) findViewById(R.id.libraryMail);
+        libraryLink=(TextView) findViewById(R.id.libraryLink);
 
 
 
@@ -67,6 +74,11 @@ public class SeeLibraryInfo extends AppCompatActivity {
                     libraryCommune.setText(libraryList.get(position-1).getComuna());
                     libraryNeighborhood.setText(libraryList.get(position-1).getBarrio());
                     librarySchedule.setText(libraryList.get(position-1).getHorario());
+                    libraryMail.setText(libraryList.get(position-1).getCorreo());
+                    libraryLink.setText(libraryList.get(position-1).getLink());
+
+
+
 
                 }else{
                     libraryId.setText("");
@@ -76,6 +88,8 @@ public class SeeLibraryInfo extends AppCompatActivity {
                     libraryCommune.setText("");
                     libraryNeighborhood.setText("");
                     librarySchedule.setText("");
+                    libraryMail.setText("");
+                    libraryLink.setText("");
 
                 }
 
@@ -90,6 +104,18 @@ public class SeeLibraryInfo extends AppCompatActivity {
 
             }
         });
+
+
+
+    }
+
+    private void moreLibraryInformation() {
+        String libraryUrl = libraryLink.getText().toString();
+
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(libraryUrl));
+        startActivity(i);
+
 
     }
 
@@ -136,6 +162,31 @@ public class SeeLibraryInfo extends AppCompatActivity {
             listLibrary.add(libraryList.get(i).getId()+" - "+libraryList.get(i).getNombre());
         }
     }
+
+    void goMail (View v){
+
+
+            Intent intention = new Intent(this, SendMailInterface.class);
+            startActivity(intention);
+
+    }
+
+    void goWeb (View v){
+
+        String libraryUrl = "http://google.com/";
+
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(libraryUrl));
+        startActivity(i);
+    }
+    void exit (View v){
+
+
+        Intent intention = new Intent(this, MainInterface.class);
+        startActivity(intention);
+
+    }
+
 
 
 }

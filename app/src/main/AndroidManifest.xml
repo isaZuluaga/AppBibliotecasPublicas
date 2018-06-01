@@ -42,7 +42,8 @@
         <activity
             android:name=".LibraryMapsActivity"
             android:label="@string/title_activity_library_maps" />
-        <activity android:name=".SeeLibraryInfo"></activity>
+        <activity android:name=".SeeLibraryInfo" />
+        <activity android:name=".SendMailInterface"></activity>
     </application>
 
 </manifest>

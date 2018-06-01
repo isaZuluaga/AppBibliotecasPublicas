@@ -157,4 +157,13 @@ public class FilterByCommuneNeighborhood extends AppCompatActivity {
             neighborhoodList.add(libraryList.get(i).getBarrio());
         }
     }
+
+    void backFilterOptions (View v){
+
+        Intent intention = new Intent(this, FilterOptionsInterface.class);
+        startActivity(intention);
+
+    }
+
+
 }

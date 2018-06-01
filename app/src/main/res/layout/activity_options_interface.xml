@@ -20,7 +20,8 @@
         android:layout_alignStart="@+id/btGoLibraryInfo"
         android:layout_marginBottom="75dp"
         android:onClick="goLibraryMap"
-        android:nestedScrollingEnabled="false" />
+        android:nestedScrollingEnabled="false"
+        android:typeface="serif" />
 
     <Button
         android:layout_width="match_parent"
@@ -30,7 +31,8 @@
         android:id="@+id/btGoLibraryInfo"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:onClick="goSeeLibraryInfo" />
+        android:onClick="goSeeLibraryInfo"
+        android:typeface="serif" />
 
     <Button
         android:layout_width="match_parent"
@@ -41,7 +43,8 @@
         android:layout_below="@+id/btGoLibraryInfo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
-        android:onClick="goFilterConsult" />
+        android:onClick="goFilterConsult"
+        android:typeface="serif" />
 
     <TextView
         android:layout_width="wrap_content"

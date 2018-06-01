@@ -24,7 +24,7 @@ public class FilterByTypeSchedule extends AppCompatActivity {
     ArrayList<Library> libraryList;
     ArrayList<String> typeList;
     ArrayList<String> scheduleList;
-    TextView paramType;
+    //TextView paramType;
 
 
     SQliteConnectionHelper conn;
@@ -38,7 +38,7 @@ public class FilterByTypeSchedule extends AppCompatActivity {
 
         comboType= (Spinner) findViewById(R.id.comboType);
         comboSchedule= (Spinner) findViewById(R.id.comboSchedule);
-        paramType= (TextView) findViewById(R.id.paramTipo);
+        //paramType= (TextView) findViewById(R.id.paramTipo);
 
 
         consultLibrarylist();
@@ -69,7 +69,7 @@ public class FilterByTypeSchedule extends AppCompatActivity {
 
 
                 }else{
-                    paramType.setText("");
+                    //paramType.setText("");
 
                 }
             }
@@ -97,7 +97,7 @@ public class FilterByTypeSchedule extends AppCompatActivity {
 
 
                 }else{
-                    paramType.setText("");
+                    //paramType.setText("");
 
                 }
 
@@ -155,6 +155,13 @@ public class FilterByTypeSchedule extends AppCompatActivity {
             typeList.add(libraryList.get(i).getTipo());
             scheduleList.add(libraryList.get(i).getHorario());
         }
+
+    }
+
+    void doExit (View v){
+
+        Intent intention = new Intent(this, FilterOptionsInterface.class);
+        startActivity(intention);
 
     }
 }

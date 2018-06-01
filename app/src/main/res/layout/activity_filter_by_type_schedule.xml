@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Filtro por Tipo y Horario"
+        android:text="Filtro por Tipo o Horario"
         android:id="@+id/filterbythView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -23,41 +23,55 @@
         android:typeface="serif" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Consultar"
+        android:text="Atras"
         android:background="#ff9600"
-        android:id="@+id/btnConsultbyth"
+        android:id="@+id/btndoExit"
+        android:textSize="20dp"
+        android:onClick="doExit"
+        android:typeface="serif"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp"
-        android:textSize="18dp"
-        android:onClick="doFilterConsult" />
+        android:layout_alignParentStart="true" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/comboType"
-        android:layout_below="@+id/filterbythView"
+        android:layout_above="@+id/textView6"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="75dp" />
+        android:layout_marginBottom="57dp" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/comboSchedule"
-        android:layout_below="@+id/comboType"
+        android:layout_above="@+id/btndoExit"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="75dp" />
+        android:layout_marginBottom="96dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="param tipo"
-        android:id="@+id/paramTipo"
-        android:layout_below="@+id/comboType"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Por Horario"
+        android:id="@+id/textView6"
+        android:layout_above="@+id/comboSchedule"
+        android:layout_alignStart="@+id/filterbythView"
+        android:textSize="20dp"
+        android:typeface="serif"
+        android:textColor="#0f0e0e" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Por tipo:"
+        android:id="@+id/textView7"
+        android:layout_above="@+id/comboType"
         android:layout_alignParentStart="true"
-        android:textColor="#080808"
-        android:textSize="20dp" />
+        android:textColor="#0c0b0b"
+        android:textSize="20dp"
+        android:typeface="serif" />
+
 </RelativeLayout>

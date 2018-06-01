@@ -8,13 +8,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/app_background"
-    tools:context="isabel.cl.appbibliotecaspublicas.FilterByCommuneNeighborhood">
+    tools:context="isabel.cl.appbibliotecaspublicas.FilterByCommuneNeighborhood"
+    android:onClick="backFilterOptions">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Filtro por Comuna y Barrio"
+        android:text="Filtro por Comuna o Barrio"
         android:id="@+id/filterbycbView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -22,30 +23,54 @@
         android:textColor="#080808"
         android:typeface="serif" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Consultar"
-        android:background="#ff9600"
-        android:id="@+id/btnConsultbycb"
-        android:textSize="18dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="44dp" />
-
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/comboComune"
-        android:layout_below="@+id/filterbycbView"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="57dp" />
+        android:layout_marginBottom="63dp"
+        android:layout_above="@+id/textView4"
+        android:layout_alignEnd="@+id/comboNeighborhood" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/comboNeighborhood"
-        android:layout_above="@+id/btnConsultbycb"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/filterbycbView"
+        android:layout_marginBottom="125dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Por Comuna:"
+        android:id="@+id/textView4"
+        android:layout_above="@+id/comboNeighborhood"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="79dp" />
+        android:textColor="#0d0c0c"
+        android:textSize="20dp"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Por Barrio:"
+        android:id="@+id/textView5"
+        android:layout_above="@+id/comboComune"
+        android:layout_alignParentStart="true"
+        android:textColor="#0b0a0a"
+        android:textSize="20dp"
+        android:typeface="serif" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Atras"
+        android:id="@+id/btBack"
+        android:background="#ff9600"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:typeface="serif" />
 </RelativeLayout>

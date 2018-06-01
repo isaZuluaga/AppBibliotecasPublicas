@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/app_background"
-    tools:context="isabel.cl.appbibliotecaspublicas.SeeLibraryInfo">
+    tools:context="isabel.cl.appbibliotecaspublicas.SeeLibraryInfo"
+    android:onClick="goMail">
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,35 +31,13 @@
         android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"></Spinner>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enviar Correo"
-        android:id="@+id/btGoSendMail"
-        android:background="#ff9600"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:onClick="goSendMail"
-        android:typeface="serif" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ampliar Info"
-        android:id="@+id/btGoMoreInfo"
-        android:background="#ff9600"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/comboLibrary"
-        android:onClick="goMoreInfo"
-        android:typeface="serif" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Nombre Biblioteca"
         android:id="@+id/libraryNAME"
-        android:textSize="23dp"
+        android:textSize="19dp"
         android:textColor="#0e0d0d"
         android:layout_above="@+id/libraryTEL"
         android:layout_alignParentStart="true"
@@ -73,7 +52,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:textColor="#080707"
-        android:textSize="23dp"
+        android:textSize="19dp"
         android:typeface="serif" />
 
     <TextView
@@ -83,7 +62,7 @@
         android:text="Dirección "
         android:id="@+id/libraryDir"
         android:textColor="#0a0909"
-        android:textSize="23dp"
+        android:textSize="19dp"
         android:layout_below="@+id/libraryTEL"
         android:layout_alignParentStart="true"
         android:typeface="serif" />
@@ -97,7 +76,7 @@
         android:layout_below="@+id/libraryDir"
         android:layout_alignParentStart="true"
         android:typeface="serif"
-        android:textSize="23dp"
+        android:textSize="19dp"
         android:textColor="#100f0f" />
 
     <TextView
@@ -108,7 +87,7 @@
         android:id="@+id/libraryNeighborhood"
         android:layout_below="@+id/libraryCommune"
         android:layout_alignParentStart="true"
-        android:textSize="23dp"
+        android:textSize="19dp"
         android:textColor="#060505"
         android:typeface="serif" />
 
@@ -121,7 +100,7 @@
         android:layout_below="@+id/libraryNeighborhood"
         android:layout_alignParentStart="true"
         android:textColor="#0a0a0a"
-        android:textSize="23dp"
+        android:textSize="19dp"
         android:typeface="serif" />
 
     <TextView
@@ -134,6 +113,52 @@
         android:layout_alignParentStart="true"
         android:textColor="#0f0e0e"
         android:typeface="serif"
-        android:textSize="23dp" />
+        android:textSize="19dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Link"
+        android:id="@+id/libraryLink"
+        android:textColor="#2c4be9"
+        android:textSize="19dp"
+        android:typeface="serif"
+        android:onClick="goWeb"
+        android:layout_below="@+id/libraryMail"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar Correo"
+        android:background="#ff9600"
+        android:id="@+id/btGoMail"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:onClick="goMail"
+        android:typeface="serif" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salir"
+        android:id="@+id/btExit"
+        android:background="#ff9600"
+        android:onClick="exit"
+        android:layout_alignTop="@+id/btGoMail"
+        android:layout_alignParentEnd="true"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Correo"
+        android:id="@+id/libraryMail"
+        android:layout_below="@+id/librarySchedule"
+        android:layout_alignParentStart="true"
+        android:textSize="19dp"
+        android:textColor="#090909" />
 
 </RelativeLayout>
