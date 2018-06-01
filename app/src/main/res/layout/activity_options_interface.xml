@@ -55,7 +55,7 @@
         android:id="@+id/optionView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp"
+        android:textSize="29dp"
         android:textColor="#0b0a0a"
         android:typeface="serif" />
 
